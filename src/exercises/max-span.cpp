@@ -14,51 +14,6 @@ MaxSpan::MaxSpan() : Exercise(
 {
 }
 
-void MaxSpan::solve()
-{
-  printSpan<5>({1, 2, 1, 1, 3}, 16);
-  printSpan<7>({1, 4, 2, 1, 4, 1, 4}, 16);
-  printSpan<7>({1, 4, 2, 1, 4, 4, 4}, 16);
-  printSpan<3>({3, 3, 3}, 16);
-  printSpan<3>({3, 9, 3}, 16);
-  printSpan<3>({3, 9, 9}, 16);
-  printSpan<2>({3, 9}, 16);
-  printSpan<2>({3, 3}, 16);
-  printSpan<0>({}, 16);
-  printSpan<1>({1}, 16);
-}
-
-template <std::size_t N>
-void MaxSpan::printSpan(std::array<int, N> nums, std::size_t prefixLength)
-{
-  // Set up the prefix
-  std::string prefix(prefixLength, ' ');
-
-  // Build the array string
-  std::stringstream arrayStream;
-
-  arrayStream << '[';
-
-  if (nums.size() > 0)
-  {
-    for (std::size_t i = 0; i < N; i += 1)
-    {
-      arrayStream << nums[i] << ",";
-    }
-
-    // Set up to overwrite the trailing comma
-    arrayStream.seekp(-1, arrayStream.cur);
-  }
-
-  arrayStream << ']';
-
-  // Insert the array string
-  std::string arrayString = arrayStream.str();
-  prefix.replace(0, arrayString.size(), arrayString);
-
-  std::cout << prefix << " => " << getMaxSpan(nums) << std::endl;
-}
-
 template <std::size_t N>
 std::size_t MaxSpan::getMaxSpan(std::array<int, N> nums)
 {
@@ -113,4 +68,49 @@ std::size_t MaxSpan::getMaxSpan(std::array<int, N> nums)
   }
 
   return theMaxSpan;
+}
+
+template <std::size_t N>
+void MaxSpan::printSpan(std::array<int, N> nums, std::size_t prefixLength)
+{
+  // Set up the prefix
+  std::string prefix(prefixLength, ' ');
+
+  // Build the array string
+  std::stringstream arrayStream;
+
+  arrayStream << '[';
+
+  if (nums.size() > 0)
+  {
+    for (std::size_t i = 0; i < N; i += 1)
+    {
+      arrayStream << nums[i] << ",";
+    }
+
+    // Set up to overwrite the trailing comma
+    arrayStream.seekp(-1, arrayStream.cur);
+  }
+
+  arrayStream << ']';
+
+  // Insert the array string
+  std::string arrayString = arrayStream.str();
+  prefix.replace(0, arrayString.size(), arrayString);
+
+  std::cout << prefix << " => " << getMaxSpan(nums) << std::endl;
+}
+
+void MaxSpan::solve()
+{
+  printSpan<5>({1, 2, 1, 1, 3}, 16);
+  printSpan<7>({1, 4, 2, 1, 4, 1, 4}, 16);
+  printSpan<7>({1, 4, 2, 1, 4, 4, 4}, 16);
+  printSpan<3>({3, 3, 3}, 16);
+  printSpan<3>({3, 9, 3}, 16);
+  printSpan<3>({3, 9, 9}, 16);
+  printSpan<2>({3, 9}, 16);
+  printSpan<2>({3, 3}, 16);
+  printSpan<0>({}, 16);
+  printSpan<1>({1}, 16);
 }
