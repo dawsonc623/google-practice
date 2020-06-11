@@ -5,15 +5,17 @@
 #include <string>
 
 #include "exercise.hpp"
+#include "exercises/max-span.hpp"
 #include "exercises/string-splosion.hpp"
 
 // The number of exercises available to run
-#define EXERCISE_COUNT 1
+#define EXERCISE_COUNT 2
 
 int main()
 {
   // Create exercises
   std::array<std::unique_ptr<Exercise>, EXERCISE_COUNT> exercises{
+      std::make_unique<MaxSpan>(),
       std::make_unique<StringSplosion>()};
 
   // Show options to choose from

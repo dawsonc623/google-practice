@@ -11,6 +11,7 @@ public:
   virtual void solve();
 
 private:
+  void printSplosion(std::string str, std::size_t prefixLength);
   std::string stringSplode(std::string str);
 };
 

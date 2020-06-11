@@ -3,25 +3,37 @@
 #include <iostream>
 #include <sstream>
 
+// Constructors
+
 StringSplosion::StringSplosion() : Exercise(
                                        "stringSplosion",
                                        "Given a non-empty string like \"Code\" return a string like \"CCoCodCode\".")
 {
 }
 
+// Methods
+
+void StringSplosion::printSplosion(std::string str, std::size_t prefixLength)
+{
+  std::string prefix(prefixLength, ' ');
+  prefix.replace(0, str.size(), str);
+
+  std::cout << prefix << " => " << stringSplode(str) << std::endl;
+}
+
 void StringSplosion::solve()
 {
-  std::cout << "Code    => " << stringSplode("Code") << std::endl
-            << "abc     => " << stringSplode("abc") << std::endl
-            << "ab      => " << stringSplode("ab") << std::endl
-            << "x       => " << stringSplode("x") << std::endl
-            << "fade    => " << stringSplode("fade") << std::endl
-            << "There   => " << stringSplode("There") << std::endl
-            << "Kitten  => " << stringSplode("Kitten") << std::endl
-            << "Bye     => " << stringSplode("Bye") << std::endl
-            << "Good    => " << stringSplode("Good") << std::endl
-            << "Bad     => " << stringSplode("Bad") << std::endl
-            << "<emtpy> => " << stringSplode("") << std::endl;
+  printSplosion("Code", 7);
+  printSplosion("abc", 7);
+  printSplosion("ab", 7);
+  printSplosion("x", 7);
+  printSplosion("fade", 7);
+  printSplosion("There", 7);
+  printSplosion("Kitten", 7);
+  printSplosion("Bye", 7);
+  printSplosion("Good", 7);
+  printSplosion("Bad", 7);
+  printSplosion("", 7);
 }
 
 std::string StringSplosion::stringSplode(std::string str)
