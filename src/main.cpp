@@ -7,7 +7,7 @@
 #include "exercise.hpp"
 #include "exercises/max-span.hpp"
 #include "exercises/string-splosion.hpp"
-#include "exercises/sum-numbers.hpp"
+#include "exercises/sum-numbers-stream.hpp"
 #include "exercises/without-string-regex.hpp"
 
 // The number of exercises available to run

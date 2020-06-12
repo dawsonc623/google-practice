@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string>
 
-#include "exercises/sum-numbers.hpp"
+#include "exercises/sum-numbers-stream.hpp"
 
 SumNumbers::SumNumbers() : Exercise(
                                "sumNumbers",
