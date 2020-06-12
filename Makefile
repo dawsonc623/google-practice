@@ -5,7 +5,8 @@ exercises : build-dir exercise.o max-span.o string-splosion.o sum-numbers-stream
 build-dir	:
 	mkdir -p build
 
-main.o : src/main.cpp include/exercise.hpp include/exercises/max-span.hpp include/exercises/string-splosion.hpp
+main.o : src/main.cpp include/exercise.hpp include/exercises/max-span.hpp include/exercises/string-splosion.hpp \
+		include/exercises/sum-numbers-stream.hpp include/exercises/without-string-regex.hpp
 	g++ -c --std=c++17 src/main.cpp -Iinclude -o build/main.o
 
 exercise.o : src/exercise.cpp include/exercise.hpp
