@@ -6,18 +6,20 @@
 #include <string>
 
 #include "exercise.hpp"
+#include "exercises/can-balance.hpp"
 #include "exercises/max-span.hpp"
 #include "exercises/string-splosion.hpp"
 #include "exercises/sum-numbers-stream.hpp"
 #include "exercises/without-string-regex.hpp"
 
 // The number of exercises available to run
-#define EXERCISE_COUNT 4
+#define EXERCISE_COUNT 5
 
 int main()
 {
   // Create exercises
   std::array<std::unique_ptr<Exercise>, EXERCISE_COUNT> exercises{
+      std::make_unique<CanBalance>(),
       std::make_unique<MaxSpan>(),
       std::make_unique<StringSplosion>(),
       std::make_unique<SumNumbers>(),
