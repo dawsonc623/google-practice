@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include <memory>
+#include <sstream>
 #include <string>
 
 #include "exercise.hpp"
@@ -22,49 +23,61 @@ int main()
       std::make_unique<SumNumbers>(),
       std::make_unique<WithoutStringRegex>()};
 
-  // Show options to choose from
+  // Generate options to choose from
+  std::stringstream optionsStream;
+
   for (short i = 0; i < EXERCISE_COUNT; i += 1)
   {
-    std::cout << (i + 1) << ". " << exercises.at(i)->getName() << std::endl;
+    optionsStream << (i + 1) << ". " << exercises.at(i)->getName() << std::endl;
   }
 
   // Allow the user to exit the program via numeric input
-  std::cout << (EXERCISE_COUNT + 1) << ". Exit" << std::endl;
+  optionsStream << (EXERCISE_COUNT + 1) << ". Exit" << std::endl;
 
-  // Start with positive-case input
-  std::cout << std::endl
-            << "Choose an exercise to run: ";
+  std::string options = optionsStream.str();
+
+  // Run until Exit is selected
 
   short exerciseNumber = 0;
 
-  std::cin >> exerciseNumber;
-
-  // Handle invalid input
-  while (std::cin.fail() || exerciseNumber < 1 || exerciseNumber > EXERCISE_COUNT + 1)
+  do
   {
-    // Skip bad input
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    // Show options
+    std::cout << options << std::endl;
 
-    // Prompt for valid input
-    std::cout << "Invalid entry. Please enter a number from the above list: ";
+    // Start with positive-case input
+    std::cout << "Choose an exercise to run: ";
+
     std::cin >> exerciseNumber;
-  }
 
-  // Spacing for readability
-  std::cout << std::endl;
+    // Handle invalid input
+    while (std::cin.fail() || exerciseNumber < 1 || exerciseNumber > EXERCISE_COUNT + 1)
+    {
+      // Skip bad input
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-  // Check the input
-  if (exerciseNumber <= EXERCISE_COUNT)
-  {
-    // Run the selected exercise if "Exit" was not selected
-    exercises[exerciseNumber - 1]->run();
-  }
-  else
-  {
-    // Show an exit message so the user knows the program exited as expected
-    std::cout << "Goodbye." << std::endl;
-  }
+      // Prompt for valid input
+      std::cout << "Invalid entry. Please enter a number from the above list: ";
+      std::cin >> exerciseNumber;
+    }
+
+    // Spacing for readability
+    std::cout << std::endl;
+
+    // Check the input
+    if (exerciseNumber <= EXERCISE_COUNT)
+    {
+      // Run the selected exercise if "Exit" was not selected
+      exercises[exerciseNumber - 1]->run();
+
+      // Spacing for readability
+      std::cout << std::endl;
+    }
+  } while (exerciseNumber <= EXERCISE_COUNT);
+
+  // Show an exit message so the user knows the program exited as expected
+  std::cout << "Goodbye." << std::endl;
 
   // Spacing for readability
   std::cout << std::endl;
