@@ -1,6 +1,6 @@
-exercises : build-dir exercise.o max-span.o string-splosion.o without-string-regex.o main.o
+exercises : build-dir exercise.o max-span.o string-splosion.o sum-numbers.o without-string-regex.o main.o
 	g++ --std=c++17 build/exercise.o build/max-span.o build/string-splosion.o build/without-string-regex.o \
-		build/main.o -o exercises
+		build/main.o build/sum-numbers.o -o exercises
 
 build-dir	:
 	mkdir -p build
@@ -16,6 +16,9 @@ max-span.o : src/exercises/max-span.cpp include/exercise.hpp include/exercises/m
 
 string-splosion.o : src/exercises/string-splosion.cpp include/exercise.hpp include/exercises/string-splosion.hpp
 	g++ -c --std=c++17 src/exercises/string-splosion.cpp -Iinclude -o build/string-splosion.o
+
+sum-numbers.o : src/exercises/sum-numbers.cpp include/exercise.hpp include/exercises/sum-numbers.hpp
+	g++ -c --std=c++17 src/exercises/sum-numbers.cpp -Iinclude -o build/sum-numbers.o
 
 without-string-regex.o : src/exercises/without-string-regex.cpp include/exercise.hpp include/exercises/without-string-regex.hpp
 	g++ -c --std=c++17 src/exercises/without-string-regex.cpp -Iinclude -o build/without-string-regex.o
