@@ -49,6 +49,15 @@
     "ctime": "cpp",
     "iterator": "cpp",
     "map": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "bit": "cpp",
+    "chrono": "cpp",
+    "condition_variable": "cpp",
+    "set": "cpp",
+    "functional": "cpp",
+    "numeric": "cpp",
+    "random": "cpp",
+    "ratio": "cpp",
+    "shared_mutex": "cpp"
   }
 }
