@@ -4,6 +4,7 @@
 #include <array>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 
 class Exercise
 {
@@ -23,6 +24,9 @@ public:
 protected:
   template <typename T, std::size_t N>
   std::string arrayToString(std::array<T, N> values);
+
+  template <typename K, typename V>
+  std::string mapToString(std::unordered_map<K, V> map);
 
 private:
   std::string name;
@@ -50,6 +54,29 @@ std::string Exercise::arrayToString(std::array<T, N> values)
   arrayStream << ']';
 
   return arrayStream.str();
+}
+
+template <typename K, typename V>
+std::string Exercise::mapToString(std::unordered_map<K, V> map)
+{
+  std::stringstream mapStream;
+
+  mapStream << "{";
+
+  if (map.size() > 0)
+  {
+    for (auto &[key, value] : map)
+    {
+      mapStream << key << ":" << value << ",";
+    }
+
+    // Set up to overwrite the trailing comma
+    mapStream.seekp(-1, mapStream.cur);
+  }
+
+  mapStream << "}";
+
+  return mapStream.str();
 }
 
 #endif
