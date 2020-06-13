@@ -44,6 +44,9 @@ int main()
 
   do
   {
+    // Spacing for readability
+    std::cout << std::endl;
+
     // Show options
     std::cout << options << std::endl;
 
@@ -72,9 +75,6 @@ int main()
     {
       // Run the selected exercise if "Exit" was not selected
       exercises[exerciseNumber - 1]->run();
-
-      // Spacing for readability
-      std::cout << std::endl;
     }
   } while (exerciseNumber <= EXERCISE_COUNT);
 
