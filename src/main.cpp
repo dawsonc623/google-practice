@@ -9,12 +9,13 @@
 #include "exercises/can-balance.hpp"
 #include "exercises/map-share.hpp"
 #include "exercises/max-span.hpp"
+#include "exercises/sort-set.hpp"
 #include "exercises/string-splosion.hpp"
 #include "exercises/sum-numbers-stream.hpp"
 #include "exercises/without-string-regex.hpp"
 
 // The number of exercises available to run
-#define EXERCISE_COUNT 6
+#define EXERCISE_COUNT 7
 
 int main()
 {
@@ -23,6 +24,7 @@ int main()
       std::make_unique<CanBalance>(),
       std::make_unique<MapShare>(),
       std::make_unique<MaxSpan>(),
+      std::make_unique<SortSet>(),
       std::make_unique<StringSplosion>(),
       std::make_unique<SumNumbers>(),
       std::make_unique<WithoutStringRegex>()};

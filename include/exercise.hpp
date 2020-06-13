@@ -2,6 +2,7 @@
 #define EXERCISE_HPP
 
 #include <array>
+#include <set>
 #include <sstream>
 #include <string>
 #include <unordered_map>
@@ -27,6 +28,9 @@ protected:
 
   template <typename K, typename V>
   std::string mapToString(std::unordered_map<K, V> map);
+
+  template <typename T>
+  std::string setToString(std::set<T> values);
 
 private:
   std::string name;
@@ -77,6 +81,29 @@ std::string Exercise::mapToString(std::unordered_map<K, V> map)
   mapStream << "}";
 
   return mapStream.str();
+}
+
+template <typename T>
+std::string Exercise::setToString(std::set<T> map)
+{
+  std::stringstream setStream;
+
+  setStream << "[";
+
+  if (map.size() > 0)
+  {
+    for (auto &value : map)
+    {
+      setStream << value << ",";
+    }
+
+    // Set up to overwrite the trailing comma
+    setStream.seekp(-1, setStream.cur);
+  }
+
+  setStream << "]";
+
+  return setStream.str();
 }
 
 #endif
